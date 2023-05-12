@@ -1,5 +1,6 @@
 package io.leangen.graphql.execution.complexity;
 
+import io.leangen.graphql.util.Utils;
 import java.util.*;
 
 /**
@@ -35,7 +36,7 @@ public class Expressions {
             // read in the next token (operator or value)
             String s = tokens.poll();
 
-            if (s.isBlank()) {
+            if (Utils.isNullOrBlank(s)) {
                 continue;
             }
 

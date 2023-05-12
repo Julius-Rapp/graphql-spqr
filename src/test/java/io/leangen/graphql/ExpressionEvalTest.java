@@ -1,8 +1,7 @@
 package io.leangen.graphql;
 
+import io.leangen.graphql.util.Maps;
 import org.junit.Test;
-
-import java.util.Map;
 
 import static io.leangen.graphql.execution.complexity.Expressions.eval;
 import static java.util.Collections.emptyMap;
@@ -33,19 +32,19 @@ public class ExpressionEvalTest {
     @Test
     public void intVariablesTest() {
         assertEquals(-48, eval("x + word * 6 - 7 * (camelCase + 5)",
-                Map.of("x", 13, "word", 5, "camelCase", 8)).intValue());
+                Maps.of("x", 13, "word", 5, "camelCase", 8)).intValue());
     }
 
     @Test
     public void stringVariablesTest() {
         assertEquals(-48, eval("x + word * 6 - 7 * (camelCase + 5)",
-                Map.of("x", "13", "word", "5", "camelCase", "8")).intValue());
+                Maps.of("x", "13", "word", "5", "camelCase", "8")).intValue());
     }
 
     @Test
     public void mixedVariablesTest() {
         assertEquals(-48, eval("x + word * 6 - 7 * (camelCase + 5)",
-                Map.of("x", 13, "word", "5", "camelCase", 8)).intValue());
+                Maps.of("x", 13, "word", "5", "camelCase", 8)).intValue());
     }
 
     @Test(expected = IllegalArgumentException.class)

@@ -37,6 +37,18 @@ public class Utils {
         return string != null && !string.isEmpty();
     }
 
+    public static boolean isNullOrBlank(String string) {
+      if (string == null) return true;
+      int length = string.length();
+      int pos = 0;
+      while (pos < length) {
+        int codepoint = string.codePointAt(pos);
+        if (!Character.isWhitespace(codepoint)) return false;
+        pos += Character.charCount(codepoint);
+      }
+      return true;
+    }
+
     public static String coalesce(String... values) {
         return Arrays.stream(values)
                 .filter(Utils::isNotEmpty)
